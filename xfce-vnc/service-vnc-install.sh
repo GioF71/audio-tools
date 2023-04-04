@@ -24,5 +24,5 @@ if [ -f "${SERVICE_FILE_NAME}" ]; then
 	systemctl --user enable vncserver.service --now
 	echo "Service enabled"
 else
-	echo "Service file ${SERVICE_FILE_NAME} missing, create with service-create.sh"
+	echo "Service file ${SERVICE_FILE_NAME} missing, create with service-vnc-create.sh"
 fi
