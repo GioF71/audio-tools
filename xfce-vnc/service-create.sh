@@ -17,7 +17,7 @@ if [ -z "${VNC_DEPTH}" ]; then
 fi
 
 VNC_EXPOSE="${config[VNC_EXPOSE]}"
-if [ "${VNC_EXPOSE}" == "YES" ]; then
+if [ "${VNC_EXPOSE^^}" == "YES" ]; then
   VNC_EXPOSE=""
 else
   VNC_EXPOSE="-localhost"
