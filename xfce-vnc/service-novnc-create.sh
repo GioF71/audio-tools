@@ -14,7 +14,7 @@ fi
 
 CERT_FILE="${CERT_DIR}/novnc.pem"
 
-if [[ -f "$CERT_FILE"]]; then
+if [[ -f "$CERT_FILE" ]]; then
     echo "Certificate file [${CERT_FILE}] already exists."
 else
     echo "Certificate file [${CERT_FILE}] does not exist, creating ..."
