@@ -1,0 +1,13 @@
+[Unit]
+Description=Start NoVNC
+After=syslog.target network.target
+
+[Service]
+Type=forking
+WorkingDirectory=%h
+
+ExecStart=/usr/bin/websockify --web=/usr/share/novnc/ --cert=$HOME/certificate/novnc.pem 6080 localhost:5901
+
+[Install]
+WantedBy=multi-user.target
+

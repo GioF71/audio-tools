@@ -25,3 +25,5 @@ else
         -subj '/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com'
     echo "Certificate file [${CERT_FILE}] created."
 fi
+
+cp novncserver.service.template novncserver.service
