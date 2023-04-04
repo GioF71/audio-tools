@@ -20,3 +20,4 @@ sed -i "s/VNC_GEOMETRY/${VNC_GEOMETRY}/g" vncserver.service
 sed -i "s/VNC_DEPTH/${VNC_DEPTH}/g" vncserver.service
 
 cat vncserver.service
+
