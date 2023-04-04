@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 SERVICE_FILE_NAME=vncserver.service
 SYSTEMD_SERVICE="$HOME/.config/systemd/user/${SERVICE_FILE_NAME}"
