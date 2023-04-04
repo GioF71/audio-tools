@@ -16,6 +16,13 @@ if [ -z "${VNC_DEPTH}" ]; then
   VNC_DEPTH=16 
 fi
 
+VNC_EXPOSE="${config[VNC_EXPOSE]}"
+if [ "${VNC_EXPOSE}" == "YES" ]; then
+  VNC_EXPOSE=""
+else
+  VNC_EXPOSE="-localhost"
+fi
+
 sed -i "s/VNC_GEOMETRY/${VNC_GEOMETRY}/g" vncserver.service
 sed -i "s/VNC_DEPTH/${VNC_DEPTH}/g" vncserver.service
 
