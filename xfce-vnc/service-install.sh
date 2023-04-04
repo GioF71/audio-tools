@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# try to stop anyway
+systemctl --user stop vncserver.service
+
 set -ex
 
 SERVICE_FILE_NAME=vncserver.service
@@ -17,7 +20,9 @@ if [ -f "${SERVICE_FILE_NAME}" ]; then
 	ln "$SERVICE_FILE_NAME" "${SYSTEMD_SERVICE}"
 	echo "Reloading systemd ..."
 	systemctl --user daemon-reload
-	echo "Systemd reloaded."
+	echo "Systemd reloaded, enabling ..."
+	systemctl --user enable vncserver.service --now
+	echo "Service enabled"
 else
 	echo "Service file ${SERVICE_FILE_NAME} missing, create with service-create.sh"
 fi
