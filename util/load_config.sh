@@ -10,7 +10,7 @@ function load_config() {
             key="$(cut -d '=' -f1 <<< ${line})"
             keyLen=`echo ${#key}`
             value=${line#*=} 
-            echo "Loading preset [$key]=[$value]"
+            echo "Loading Variable [$key]=[$value]"
             config[$key]=$value
     fi
     done < "$1"

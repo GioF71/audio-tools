@@ -3,6 +3,10 @@
 # try to stop anyway
 systemctl --user stop vncserver.service
 
+source ../util/load_config.sh
+
+load_config .config
+
 set -ex
 
 SERVICE_FILE_NAME=vncserver.service
@@ -11,6 +15,20 @@ SYSTEMD_SERVICE="${SYSTEMD_PATH}/${SERVICE_FILE_NAME}"
 
 echo "SERVICE_FILE_NAME=[$SERVICE_FILE_NAME]"
 echo "SYSTEMD_SERVICE=[$SYSTEMD_SERVICE]"
+
+VNC_PASSWORD="${config[VNC_PASSWORD]}"
+if [ -z "${VNC_PASSWORD}" ]; then
+  echo "Using default for VNC_PASSWORD"
+  VNC_PASSWORD=password
+fi
+
+echo "VNC_PASSWORD=[$VNC_PASSWORD]"
+
+mkdir -p ${HOME}/.vnc
+echo $VNC_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
+chmod 600 $HOME/.vnc/passwd
+
+#touch $HOME/.vnc/`hostname`:1.pid
 
 if [ -f "${SERVICE_FILE_NAME}" ]; then
         if [ -f "${SYSTEMD_SERVICE}" ]; then 
