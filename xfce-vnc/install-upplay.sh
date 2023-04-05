@@ -2,14 +2,10 @@
 
 set -e
 
-REPO_KEY="/etc/apt/sources.list.d/upmpdcli-bullseye.list"
-if [ ! -f "${REPO_KEY}" ]; then
-  echo "Downloading repo key ..."
-  sudo wget https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg -O "${REPO_KEY}"
-  echo "Repo key downloaded"
-else
-  echo "Repo key already available"
-fi
+REPO_KEY="/usr/share/keyrings/lesbonscomptes.gpg"
+echo "Downloading repo key ..."
+sudo wget -O $REPO_KEY https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg
+echo "Repo key downloaded"
 
 declare -A repo_url_dict
 
@@ -24,13 +20,9 @@ ARCH=`uname -m`
 REPO_URL=${repo_url_dict["${ARCH}"]};
 
 REPO_LIST="/etc/apt/sources.list.d/upmpdcli-bullseye.list"
-if [ ! -f "${REPO_LIST}" ]; then
-  echo "Downloading source list"
-  sudo wget $REPO_URL -O "${REPO_LIST}"
-  echo "Source list downloaded"
-else
-  echo "Source list already available"
-fi
+echo "Downloading source list [${REPO_URL}]"
+sudo wget -O ${REPO_LIST} ${REPO_URL}
+echo "Source list downloaded"
 
 sudo apt-get update
 
