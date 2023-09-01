@@ -22,7 +22,7 @@ services:
     restart: always
 
   upmpdcli:
-    image: c.homelab.bustocastle.xyz/giof71/upmpdcli:latest-renderer
+    image: ${DOCKER_REPO:-docker.io}/giof71/upmpdcli:latest-renderer
     container_name: upnp-renderer-simple-upmpdcli
     network_mode: host
     environment:
