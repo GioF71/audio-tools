@@ -4,8 +4,8 @@ These are a set of audio tools I have prepared over time for my own necessities.
 
 ## Players
 
-Most of the following players are docker-compose files.  
-The usage consists in duplicating the `sample.env` file to the `.env` file using the command:
+Most of the following player configuration are built using docker-compose files and environment variables with defaults on the compose file itself, customizable using a `.env` file.  
+Your own `.env` should generally be initialized by duplicating the `sample.env` file using the command:
 
 ```text
 cp sample.env .env
