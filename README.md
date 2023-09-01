@@ -16,7 +16,7 @@ All the docker-compose based configurations allow you to specify a docker regist
 
 ### SqueezeLite
 
-#### Reference
+#### SqueezeLite References
 
 These player configurations rely on my [squeezelite-docker](https://github.com/GioF71/squeezelite-docker) repository and on the related [docker images](https://hub.docker.com/r/giof71/squeezelite).  
 The following configurations are very simple configuration, which might be a good starting point or a good fit if you do not need very specific setting (like, e.g. upsampling, excluding codecs, etc).  
@@ -38,7 +38,7 @@ SQUEEZELITE_SERVER_PORT|Address and port of your server, it is mandatory to spec
 
 ### Upnp-Renderer
 
-#### Reference
+#### Upnp-Renderer References
 
 These player configurations rely on my [upmpdcli-docker](https://github.com/GioF71/upmpdcli-docker) repository and on the related [docker images](https://hub.docker.com/r/giof71/upmpdcli).  
 MPD is also needed, and we will use the [mpd-alsa-docker](https://github.com/GioF71/mpd-alsa-docker) repository and on the related [docker images](https://hub.docker.com/r/giof71/mpd-alsa).  
