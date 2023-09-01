@@ -59,6 +59,10 @@ FRIENDLY_NAME|Name of the upnp/dlna player|UpnpRenderer
 RENDERER_MODE|Can be OPENHOME, UPNPAV or BOTH|BOTH
 CHECK_CONTENT_FORMAT|Check if the content is playable|yes
 
+### Tidal Connect
+
+This is a cross-link: for tidal-connect, please refer to [this repository](https://github.com/GioF71/tidal-connect).
+
 ## xfce-vnc
 
 Allows to create a xfce-based vnc session with the possibility of installing upplay, pulseaudio and pulseaudio-dlna.  
