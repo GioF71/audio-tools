@@ -5,6 +5,7 @@ services:
   squeezelite:
     image: ${DOCKER_REPO:-docker.io}/giof71/squeezelite
     container_name: squeezelite-simple
+    network_mode: host
     devices:
       - /dev/snd:/dev/snd
     environment:
