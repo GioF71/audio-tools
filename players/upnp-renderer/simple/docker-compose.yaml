@@ -1,6 +1,12 @@
 ---
 version: '3.3'
 
+volumes:
+  mpd-db:
+  upmpdcli-cache:
+  upmpdcli-confdir:
+
+
 services:
   mpd:
     image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:latest
@@ -16,9 +22,7 @@ services:
       - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-hw:0}
       - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
     volumes:
-      - ./mpd-db:/db
-      - ./mpd-log:/log
-      - ./mpd-playlists:/playlists
+      - mpd-db:/db
     restart: always
 
   upmpdcli:
@@ -33,7 +37,7 @@ services:
       - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
       - RENDERER_MODE=${RENDERER_MODE:-BOTH}
     volumes:
-      - ./upmpdcli-confdir:/uprcl/confdir
-      - ./upmpdcli-cache:/cache
+      - upmpdcli-confdir:/uprcl/confdir
+      - upmpdcli-cache:/cache
     restart: always
 

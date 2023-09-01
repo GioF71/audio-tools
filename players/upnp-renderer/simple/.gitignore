@@ -1,6 +1,1 @@
 .env
-mpd-db
-mpd-log
-mpd-playlists
-upmpdcli-confdir
-upmpdcli-cache
