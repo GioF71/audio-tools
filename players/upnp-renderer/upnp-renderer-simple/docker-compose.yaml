@@ -10,11 +10,11 @@ services:
   mpd:
     image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:latest
     container_name: upnp-renderer-simple-mpd
+    network_mode: host
     devices:
       - /dev/snd:/dev/snd
-    ports:
-      - ${MPD_PORT:-6600}:6600/tcp
     environment:
+      - MPD_PORT=${MPD_PORT:-6600}
       - USER_MODE=N
       - ALSA_OUTPUT_CREATE=yes
       - ALSA_OUTPUT_ENABLED=yes
