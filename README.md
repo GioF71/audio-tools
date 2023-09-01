@@ -84,4 +84,5 @@ This is a cross-link: for tidal-connect, please refer to [this repository](https
 
 Allows to create a xfce-based vnc session with the possibility of installing upplay, pulseaudio and pulseaudio-dlna.  
 This allows to use a browser to play to any dlna renderer easily, even from a windows desktop.  
+The scripts currenly work on debian bullseye.  
 More information to come asap.  
