@@ -18,7 +18,7 @@ services:
       - USER_MODE=N
       - ALSA_OUTPUT_CREATE=yes
       - ALSA_OUTPUT_ENABLED=yes
-      - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-hw:0}
+      - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:default}
       - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
     volumes:
       - mpd-db:/db
