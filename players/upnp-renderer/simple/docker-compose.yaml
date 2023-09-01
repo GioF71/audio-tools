@@ -6,7 +6,6 @@ volumes:
   upmpdcli-cache:
   upmpdcli-confdir:
 
-
 services:
   mpd:
     image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:latest
@@ -40,4 +39,3 @@ services:
       - upmpdcli-confdir:/uprcl/confdir
       - upmpdcli-cache:/cache
     restart: always
-
