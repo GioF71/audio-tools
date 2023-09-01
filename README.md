@@ -71,6 +71,7 @@ VARIABLE|DESCRIPTION|DEFAULT
 :---|:---|:---
 ALSA_DEVICE|Alsa output device for mpd|default
 ALSA_FORMAT|Output format|S16
+BITRATE|Audio Quality|320
 INITIAL_VOLUME|Initial volume|100
 DEVICE_TYPE|Device type (icon in Spotify)|speaker
 DEVICE_NAME|Name of the player|LibreSpot
