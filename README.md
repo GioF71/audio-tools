@@ -59,6 +59,22 @@ FRIENDLY_NAME|Name of the upnp/dlna player|UpnpRenderer
 RENDERER_MODE|Can be OPENHOME, UPNPAV or BOTH|BOTH
 CHECK_CONTENT_FORMAT|Check if the content is playable|yes
 
+### Spotify Connect (LibreSpot)
+
+#### LibreSpot References
+
+These player configurations rely on my [librespot](https://github.com/GioF71/librespot-docker) repository and on the related [docker images](https://hub.docker.com/r/giof71/librespot).  
+
+#### Alsa
+
+VARIABLE|DESCRIPTION|DEFAULT
+:---|:---|:---
+ALSA_DEVICE|Alsa output device for mpd|default
+ALSA_FORMAT|Output format|S16
+INITIAL_VOLUME|Initial volume|100
+DEVICE_TYPE|Device type (icon in Spotify)|speaker
+DEVICE_NAME|Name of the player|LibreSpot
+
 ### Tidal Connect
 
 This is a cross-link: for tidal-connect, please refer to [this repository](https://github.com/GioF71/tidal-connect).
