@@ -1,0 +1,38 @@
+---
+version: '3.3'
+
+services:
+  mpd:
+    image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:latest
+    container_name: upnp-renderer-simple-mpd
+    devices:
+      - /dev/snd:/dev/snd
+    ports:
+      - ${MPD_PORT:-6600}:6600/tcp
+    environment:
+      - USER_MODE=N
+      - ALSA_OUTPUT_CREATE=yes
+      - ALSA_OUTPUT_ENABLED=yes
+      - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-hw:0}
+    volumes:
+      - ./mpd-db:/db
+      - ./mpd-log:/log
+      - ./mpd-playlists:/playlists
+    restart: always
+
+  upmpdcli:
+    image: c.homelab.bustocastle.xyz/giof71/upmpdcli:latest-renderer
+    container_name: upnp-renderer-simple-upmpdcli
+    network_mode: host
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - MPD_HOST=localhost
+      - MPD_PORT=${MPD_PORT:-6600}
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
+      - RENDERER_MODE=${RENDERER_MODE:-BOTH}
+    volumes:
+      - ./upmpdcli-confdir:/uprcl/confdir
+      - ./upmpdcli-cache:/cache
+    restart: always
+
