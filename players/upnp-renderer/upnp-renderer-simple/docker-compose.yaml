@@ -14,7 +14,7 @@ services:
     devices:
       - /dev/snd:/dev/snd
     environment:
-      - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-localhost}
+      - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
       - USER_MODE=N
       - ALSA_OUTPUT_CREATE=yes
@@ -32,7 +32,7 @@ services:
     environment:
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}
-      - MPD_HOST=localhost
+      - MPD_HOST=${MPD_HOST:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
       - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
       - RENDERER_MODE=${RENDERER_MODE:-BOTH}
