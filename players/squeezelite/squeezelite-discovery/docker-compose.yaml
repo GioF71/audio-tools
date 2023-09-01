@@ -4,10 +4,11 @@ version: "3"
 services:
   squeezelite:
     image: ${DOCKER_REPO:-docker.io}/giof71/squeezelite
-    container_name: squeezelite-simple
+    container_name: squeezelite-discovery
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
     environment:
       - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite}
       - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
+    restart: always
