@@ -14,6 +14,7 @@ services:
     devices:
       - /dev/snd:/dev/snd
     environment:
+      - MPD_BIND_ADDRESS=localhost
       - MPD_PORT=${MPD_PORT:-6600}
       - USER_MODE=N
       - ALSA_OUTPUT_CREATE=yes
