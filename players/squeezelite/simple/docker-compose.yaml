@@ -2,9 +2,9 @@
 version: "3"
 
 services:
-  squeezelite-simple:
+  squeezelite:
     image: ${DOCKER_REPO:-docker.io}/giof71/squeezelite
-    container_name: squeezelite
+    container_name: squeezelite-simple
     devices:
       - /dev/snd:/dev/snd
     environment:
