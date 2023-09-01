@@ -4,14 +4,15 @@ These are a set of audio tools I have prepared over time for my own necessities.
 
 ## Players
 
-Most of the following players are docker-compose files.  
-The usage consists in duplicating the `sample.env` file to the `.env` file using the command:
+Most of the following player configuration are built using docker-compose files and environment variables with defaults on the compose file itself, customizable using a `.env` file.  
+Your own `.env` should generally be initialized by duplicating the `sample.env` file using the command:
 
 ```text
 cp sample.env .env
 ```
 
-from each directory. Then proceed with tuning. It is generally very simple. Refer to the upstream project for more details in case of doubts.  
+from each directory.  
+After this step, you can proceed with tuning. It is generally very simple. Refer to the upstream project for more details in case of doubts.  
 All the docker-compose based configurations allow you to specify a docker registry other than docker.io (the default) using the environment variable `DOCKER_REGISTRY`, in case you have a pull-through cache registry on your network.  
 
 ### SqueezeLite
