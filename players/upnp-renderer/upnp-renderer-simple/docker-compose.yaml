@@ -8,7 +8,7 @@ volumes:
 
 services:
   mpd:
-    image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:latest
+    image: ${DOCKER_REPO:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
     container_name: upnp-renderer-simple-mpd
     network_mode: host
     devices:
