@@ -56,6 +56,7 @@ MPD_ALSA_DEVICE|Alsa output device for mpd|default
 MPD_MIXER_TYPE|Mixer mode|software
 FRIENDLY_NAME|Name of the upnp/dlna player|UpnpRenderer
 RENDERER_MODE|Can be OPENHOME, UPNPAV or BOTH|BOTH
+CHECK_CONTENT_FORMAT|Check if the content is playable|yes
 
 ## xfce-vnc
 

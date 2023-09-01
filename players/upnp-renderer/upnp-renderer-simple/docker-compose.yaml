@@ -36,6 +36,7 @@ services:
       - MPD_PORT=${MPD_PORT:-6600}
       - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
       - RENDERER_MODE=${RENDERER_MODE:-BOTH}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
     volumes:
       - upmpdcli-confdir:/uprcl/confdir
       - upmpdcli-cache:/cache
