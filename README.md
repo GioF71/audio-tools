@@ -8,7 +8,7 @@ Most of the following players are docker-compose files.
 The usage consists in duplicating the `sample.env` file to the `.env` file using the command:
 
 ```text
-cp sample.env
+cp sample.env .env
 ```
 
 from each directory. Then proceed with tuning. It is generally very simple. Refer to the upstream project for more details in case of doubts.  
