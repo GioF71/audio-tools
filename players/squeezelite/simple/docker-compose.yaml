@@ -9,4 +9,4 @@ services:
       - /dev/snd:/dev/snd
     environment:
       - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite}
-      - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:}
+      - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
