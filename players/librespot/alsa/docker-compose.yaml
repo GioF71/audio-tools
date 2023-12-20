@@ -1,15 +1,12 @@
 ---
 version: "3"
 
-volumes:
-  cache:
-  system-cache:
-
 services:
   librespot:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/librespot:latest
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/librespot:${IMAGE_TAG:-latest}
     container_name: librespot-alsa
     network_mode: host
+    user: "${PUID:-1000}:${AUDIO_GID:-29}"
     devices:
       - /dev/snd:/dev/snd
     environment:
@@ -22,10 +19,7 @@ services:
       - DEVICE_NAME=${DEVICE_NAME:-LibreSpot}
       - ENABLE_CACHE=y
       - ENABLE_SYSTEM_CACHE=y
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
-      - AUDIO_GID=${AUDIO_GID:-29}
     volumes:
-      - cache:/data/cache
-      - system-cache:/data/system-cache
+      - ./cache:/data/cache
+      - ./system-cache:/data/system-cache
     restart: always
