@@ -11,4 +11,6 @@ services:
     environment:
       - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite}
       - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
+    volumes:
+      - ./config:/config
     restart: always
