@@ -58,6 +58,24 @@ MPD_MIXER_TYPE|Mixer mode|software
 FRIENDLY_NAME|Name of the upnp/dlna player|UpnpRenderer
 RENDERER_MODE|Can be OPENHOME, UPNPAV or BOTH|BOTH
 CHECK_CONTENT_FORMAT|Check if the content is playable|yes
+PUID|The user id which will will run upmpdcli, defaults to `1000`
+GUID|The group id which will will run upmpdcli, defaults to `1000`
+
+#### User Mode
+
+VARIABLE|DESCRIPTION|DEFAULT
+:---|:---|:---
+MPD_TAG|Selected tag for mpd-alsa|vanilla
+MPD_BIND_ADDRESS|Bind address for mpd|127.0.0.1
+MPD_HOST|Address of mpd|127.0.0.1
+MPD_PORT|Port used by mpd|6600
+MPD_ALSA_DEVICE|Alsa output device for mpd|default
+MPD_MIXER_TYPE|Mixer mode|software
+FRIENDLY_NAME|Name of the upnp/dlna player|UpnpRenderer
+RENDERER_MODE|Can be OPENHOME, UPNPAV or BOTH|BOTH
+CHECK_CONTENT_FORMAT|Check if the content is playable|yes
+PUID|Mandatory user id which will will run the containers, defaults to `1000`
+AUDIO_GID|Mandatory group id of the audio group, will be used to run the containers, defaults to `29`
 
 ### Spotify Connect (LibreSpot)
 

@@ -1,0 +1,37 @@
+---
+version: '3.3'
+
+services:
+  mpd:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
+    container_name: upnp-renderer-simple-mpd
+    user: "${PUID:-1000}:${AUDIO_GID:-29}"
+    network_mode: host
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-127.0.0.1}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - ALSA_OUTPUT_CREATE=yes
+      - ALSA_OUTPUT_ENABLED=yes
+      - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-default}
+      - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
+    volumes:
+      - ./mpd-db:/db
+    restart: always
+
+  upmpdcli:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:latest-renderer
+    container_name: upnp-renderer-simple-upmpdcli
+    user: "${PUID:-1000}:${AUDIO_GID:-29}"
+    network_mode: host
+    environment:
+      - MPD_HOST=${MPD_HOST:-127.0.0.1}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
+      - RENDERER_MODE=${RENDERER_MODE:-BOTH}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+    volumes:
+      - ./upmpdcli-confdir:/uprcl/confdir
+      - ./upmpdcli-cache:/cache
+    restart: always

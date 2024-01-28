@@ -1,0 +1,4 @@
+.env
+upmpdcli-confdir
+upmpdcli-cache
+mpd-db
