@@ -4,7 +4,7 @@ version: '3.3'
 services:
   mpd:
     image: ${DOCKER_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
-    container_name: upnp-renderer-simple-mpd
+    container_name: upnp-renderer-um-mpd
     user: "${PUID:-1000}:${AUDIO_GID:-29}"
     network_mode: host
     devices:
@@ -22,7 +22,7 @@ services:
 
   upmpdcli:
     image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:latest-renderer
-    container_name: upnp-renderer-simple-upmpdcli
+    container_name: upnp-renderer-um-upmpdcli
     user: "${PUID:-1000}:${AUDIO_GID:-29}"
     network_mode: host
     environment:
