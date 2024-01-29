@@ -3,7 +3,7 @@ version: "3"
 
 services:
   squeezelite:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/squeezelite
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/squeezelite:${IMAGE_TAG:-latest}
     container_name: squeezelite-discovery
     network_mode: host
     devices:
