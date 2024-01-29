@@ -21,7 +21,7 @@ services:
       - ALSA_OUTPUT_ENABLED=yes
       - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-default}
       - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
-      - ALSA_OUTPUT_FORMAT=${ALSA_OUTPUT_FORMAT:-}
+      - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
     volumes:
       - mpd-db:/db
     restart: always
