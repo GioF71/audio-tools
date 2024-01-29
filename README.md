@@ -22,20 +22,15 @@ All the docker-compose based configurations allow you to specify a docker regist
 These player configurations rely on my [squeezelite-docker](https://github.com/GioF71/squeezelite-docker) repository and on the related [docker images](https://hub.docker.com/r/giof71/squeezelite).  
 The following configurations are very simple configuration, which might be a good starting point or a good fit if you do not need very specific setting (like, e.g. upsampling, excluding codecs, etc).  
 
-#### SqueezeLite with discovery enabled
-
-VARIABLE|DESCRIPTION|DEFAULT
-:---|:---|:---
-SQUEEZELITE_NAME|Name of the player|SqueezeLite
-SQUEEZELITE_AUDIO_DEVICE|Audio device|default
-
-#### SqueezeLite with discovery disabled
+#### SqueezeLite
 
 VARIABLE|DESCRIPTION|DEFAULT
 :---|:---|:---
 SQUEEZELITE_NAME|Name of the player|SqueezeLite
 SQUEEZELITE_AUDIO_DEVICE|Audio device|default
 SQUEEZELITE_SERVER_PORT|Address and port of your server, it is mandatory to specify appropriately|`lms.homelab.local:3843`
+SQUEEZELITE_VOLUME_CONTROL|Volume Control
+SQUEEZELITE_PARAMS|Squeezelite Params
 
 ### Upnp-Renderer
 
