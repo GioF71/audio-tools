@@ -11,6 +11,7 @@ This is possible because of these awesome projects:
 
 [Mopidy-Tidal](https://github.com/tehkillerbee/mopidy-tidal) by [tehkillerbee](https://github.com/tehkillerbee)  
 [Python-tidal](https://github.com/tehkillerbee/python-tidal) by [tamland](https://github.com/tamland), now maintained by [tehkillerbee](https://github.com/tehkillerbee)  
+[Mopidy](https://mopidy.com/): Mopidy is an extensible music server written in Python  
 
 We will be using my [docker image for mopidy](https://github.com/GioF71/mopidy-docker) which I built with this use case in mind.  
 
