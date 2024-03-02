@@ -1,0 +1,25 @@
+---
+version: "3.3"
+
+services:
+  mopidy:
+    image: ${MOPIDY_IMAGE_REPO:-docker.io}/giof71/mopidy:${MOPIDY_IMAGE_TAG:-latest}
+    container_name: mopidy-tidal
+    user: "${PUID}:${AUDIO_GID}"
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - AUDIO_OUTPUT=${AUDIO_OUTPUT:-default}
+      - TIDAL_ENABLED=${TIDAL_ENABLED:-yes}
+      - TIDAL_QUALITY=${TIDAL_QUALITY:-LOSSLESS}
+      - TIDAL_AUTH_METHOD=${TIDAL_AUTH_METHOD:-OAUTH}
+      - TIDAL_LOGIN_SERVER_PORT=${TIDAL_LOGIN_SERVER_PORT:-8989}
+    ports:
+      - ${MOPIDY_PORT:-6680}:6680
+      - ${TIDAL_LOGIN_SERVER_PORT:-8989}:${TIDAL_LOGIN_SERVER_PORT:-8989}
+    volumes:
+      - ./config:/config
+      #- ./cache:/cache
+      #- ./data:/data
+      #- ./dconf:/.cache/dconf
+    restart: always
