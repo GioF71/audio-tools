@@ -9,7 +9,7 @@ services:
     devices:
       - /dev/snd:/dev/snd
     environment:
-      - AUDIO_OUTPUT=${AUDIO_OUTPUT:-default}
+      - AUDIO_OUTPUT=${AUDIO_OUTPUT:-autoaudiosink}
       - TIDAL_ENABLED=${TIDAL_ENABLED:-yes}
       - TIDAL_QUALITY=${TIDAL_QUALITY:-LOSSLESS}
       - TIDAL_AUTH_METHOD=${TIDAL_AUTH_METHOD:-OAUTH}
