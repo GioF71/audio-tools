@@ -22,4 +22,4 @@ services:
     volumes:
       - ./cache:/data/cache
       - ./system-cache:/data/system-cache
-    restart: always
+    restart: unless-stopped

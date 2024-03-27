@@ -22,4 +22,4 @@ services:
       #- ./cache:/cache
       #- ./data:/data
       #- ./dconf:/.cache/dconf
-    restart: always
+    restart: unless-stopped

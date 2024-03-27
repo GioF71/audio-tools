@@ -24,7 +24,7 @@ services:
       - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
     volumes:
       - mpd-db:/db
-    restart: always
+    restart: unless-stopped
 
   upmpdcli:
     image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:latest-renderer
@@ -41,4 +41,4 @@ services:
     volumes:
       - upmpdcli-confdir:/uprcl/confdir
       - upmpdcli-cache:/cache
-    restart: always
+    restart: unless-stopped

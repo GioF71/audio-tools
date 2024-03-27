@@ -16,4 +16,4 @@ services:
       - SQUEEZELITE_SERVER_PORT=${SQUEEZELITE_SERVER_PORT:-}
     volumes:
       - ./config:/config
-    restart: always
+    restart: unless-stopped
