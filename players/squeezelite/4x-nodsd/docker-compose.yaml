@@ -1,0 +1,21 @@
+---
+version: "3"
+
+services:
+  squeezelite:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/squeezelite:${IMAGE_TAG:-latest}
+    container_name: squeezelite-4x-nodsd
+    network_mode: host
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - PRESET=archimago-goldilocks,rates_up_to_192k
+      - SQUEEZELITE_EXCLUDE_CODECS=dsd
+      - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite 4x noDSD}
+      - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
+      - SQUEEZELITE_VOLUME_CONTROL=${SQUEEZELITE_VOLUME_CONTROL:-}
+      - SQUEEZELITE_PARAMS=${SQUEEZELITE_PARAMS:-}
+      - SQUEEZELITE_SERVER_PORT=${SQUEEZELITE_SERVER_PORT:-}
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
