@@ -38,3 +38,15 @@ services:
       - ./upmpdcli-confdir:/uprcl/confdir
       - ./upmpdcli-cache:/cache
     restart: unless-stopped
+
+  yams:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/yams:latest
+    container_name: upnp-renderer-um-yams
+    network_mode: host
+    environment:
+      - TZ=Europe/Rome
+      - MPD_HOST=localhost
+      - MPD_PORT=${MPD_PORT:-6600}
+    volumes:
+      - ./yams-data/data:/data
+    restart: always
