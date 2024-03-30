@@ -24,6 +24,8 @@ services:
   upmpdcli:
     image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:latest-renderer
     container_name: upnp-renderer-um-upmpdcli
+    depends_on:
+      - mpd
     user: "${PUID:-1000}:${AUDIO_GID:-29}"
     network_mode: host
     environment:
