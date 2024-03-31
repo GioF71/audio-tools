@@ -11,7 +11,7 @@ services:
       - /dev/snd:/dev/snd
     environment:
       - PRESET=archimago-goldilocks,rates_up_to_192k
-      - SQUEEZELITE_EXCLUDE_CODECS=dsd
+      - SQUEEZELITE_EXCLUDE_CODECS=${SQUEEZELITE_EXCLUDE_CODECS:-dsd}
       - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite 4x noDSD}
       - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
       - SQUEEZELITE_VOLUME_CONTROL=${SQUEEZELITE_VOLUME_CONTROL:-}

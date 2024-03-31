@@ -4,14 +4,15 @@ version: "3"
 services:
   squeezelite:
     image: ${DOCKER_REGISTRY:-docker.io}/giof71/squeezelite:${IMAGE_TAG:-latest}
-    container_name: squeezelite
+    container_name: squeezelite-4x-nodsd
     user: "${PUID:-1000}:${AUDIO_GID:-29}"
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
     environment:
-      - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite}
+      - PRESET=archimago-goldilocks,rates_up_to_192k
       - SQUEEZELITE_EXCLUDE_CODECS=${SQUEEZELITE_EXCLUDE_CODECS:-}
+      - SQUEEZELITE_NAME=${SQUEEZELITE_NAME:-SqueezeLite 4x}
       - SQUEEZELITE_AUDIO_DEVICE=${SQUEEZELITE_AUDIO_DEVICE:-default}
       - SQUEEZELITE_VOLUME_CONTROL=${SQUEEZELITE_VOLUME_CONTROL:-}
       - SQUEEZELITE_PARAMS=${SQUEEZELITE_PARAMS:-}
