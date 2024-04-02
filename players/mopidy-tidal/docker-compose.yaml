@@ -14,12 +14,26 @@ services:
       - TIDAL_QUALITY=${TIDAL_QUALITY:-LOSSLESS}
       - TIDAL_AUTH_METHOD=${TIDAL_AUTH_METHOD:-OAUTH}
       - TIDAL_LOGIN_SERVER_PORT=${TIDAL_LOGIN_SERVER_PORT:-8989}
+      - MPD_ENABLED=yes
     ports:
       - ${MOPIDY_PORT:-6680}:6680
       - ${TIDAL_LOGIN_SERVER_PORT:-8989}:${TIDAL_LOGIN_SERVER_PORT:-8989}
     volumes:
       - ./config:/config
-      #- ./cache:/cache
-      #- ./data:/data
-      #- ./dconf:/.cache/dconf
+      - ./cache:/cache
+      - ./data:/data
+      - ./dconf:/.cache/dconf
+    restart: unless-stopped
+
+  yams:
+    image: ${YAMS_IMAGE_REPO:-docker.io}/giof71/yams:latest
+    container_name: mopidy-yams
+    depends_on:
+      - mopidy
+    environment:
+      - TZ=Europe/Rome
+      - MPD_HOST=mopidy
+      - MPD_PORT=6600
+    volumes:
+      - ./yams:/data
     restart: unless-stopped
