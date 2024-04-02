@@ -2,4 +2,5 @@ cache
 config
 data
 dconf
+yams
 .env
