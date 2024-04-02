@@ -5,10 +5,12 @@ services:
   mopidy:
     image: ${MOPIDY_IMAGE_REPO:-docker.io}/giof71/mopidy:${MOPIDY_IMAGE_TAG:-latest}
     container_name: mopidy-tidal
-    user: "${PUID}:${AUDIO_GID}"
     devices:
       - /dev/snd:/dev/snd
     environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - AUDIO_GID=${AUDIO_GID:-29}
       - AUDIO_OUTPUT=${AUDIO_OUTPUT:-autoaudiosink}
       - TIDAL_ENABLED=${TIDAL_ENABLED:-yes}
       - TIDAL_QUALITY=${TIDAL_QUALITY:-LOSSLESS}
@@ -32,6 +34,8 @@ services:
       - mopidy
     environment:
       - TZ=Europe/Rome
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
       - MPD_HOST=mopidy
       - MPD_PORT=6600
     volumes:
