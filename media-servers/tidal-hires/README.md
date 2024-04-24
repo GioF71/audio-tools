@@ -3,7 +3,7 @@
 ## Description
 
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
-A premium Tidal Account is required, particularly the HiFi Plus plan if you want to actually play hi-res.  
+A premium Tidal Account is required.  
 
 ## Limitations
 
