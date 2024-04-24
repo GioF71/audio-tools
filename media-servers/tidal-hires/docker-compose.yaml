@@ -3,7 +3,7 @@ version: "3"
 
 services:
   upmpdcli:
-    image: giof71/upmpdcli:feature-tidal-hires-jammy-full
+    image: giof71/upmpdcli
     container_name: upmpdcli-tidal-hires
     network_mode: host
     environment:
