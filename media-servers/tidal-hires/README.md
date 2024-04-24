@@ -7,7 +7,11 @@ A premium Tidal Account is required, particularly the HiFi Plus plan if you want
 
 ## Limitations
 
-The only renderer know to be working with Tidal in hires mode with upmpdcli as the media server is the combination of mpd and upmpdcli (as a renderer).  
+The only renderers know to be working with Tidal in hires mode with upmpdcli as the media server are:
+
+- the combination of mpd and upmpdcli (as a renderer) [docker images [here](https://github.com/GioF71/mpd-alsa-docker) and [here](https://github.com/GioF71/upmpdcli-docker))
+- [gmrender-resurrect](https://github.com/hzeller/gmrender-resurrect), docker image ([here](https://github.com/GioF71/gmrender-resurrect-docker))
+  
 The limitation is due to the fact that the player must be able to play a `mpd manifest`.   
 
 ## Instructions
