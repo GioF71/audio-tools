@@ -1,14 +1,9 @@
-# Upmpdcli Tidal Hires (Preview)
+# Upmpdcli Tidal Hires
 
 ## Description
 
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
 A premium Tidal Account is required, particularly the HiFi Plus plan if you want to actually play hi-res.  
-
-### Caveat
-
-This is currently a **tech preview**.  
-The upmpdcli plugin is not yet complete for hires support, and the [underlying library](https://github.com/tamland/python-tidal) does not have an official release with hires support. 
 
 ## Limitations
 
