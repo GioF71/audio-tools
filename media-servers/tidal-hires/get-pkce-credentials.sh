@@ -10,5 +10,5 @@ docker run \
     --user "$PUID:$PGID" \
     --entrypoint /app/bin/get-tidal-credentials-pkce.py \
     -v $(pwd)/cache/tidal:/tmp/generated \
-    giof71/upmpdcli:feature-tidal-hires-jammy-full
+    giof71/upmpdcli
 

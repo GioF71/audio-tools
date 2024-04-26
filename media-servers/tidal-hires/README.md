@@ -26,6 +26,17 @@ In order to run the script, use the following command, from this directory:
 
 `./get-pkce-credentials.sh`
 
+### Tune your settings
+
+This is not mandatory, but you can copy the provided `sample.env` to your own `.env` file.  
+Copy the files:
+
+```text
+cp sample.env .env
+```
+
+Edit you `.env` file, instructions and options are in the file itself.
+
 ### Start the application
 
 Simply start the container using:
