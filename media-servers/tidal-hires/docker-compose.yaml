@@ -15,7 +15,7 @@ services:
       - TIDAL_ENABLE=yes
       - TIDAL_AUDIO_QUALITY=HI_RES_LOSSLESS
       - TIDAL_DOWNLOAD_PLUGIN=yes
-      - TIDAL_PLUGIN_BRANCH=tidal-hires
+      - TIDAL_PLUGIN_BRANCH=latest-tidal
       - WEBSERVER_DOCUMENT_ROOT=/cache/wwwpublic
     volumes:
       - ./cache:/cache
