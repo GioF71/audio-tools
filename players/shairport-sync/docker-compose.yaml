@@ -1,0 +1,14 @@
+---
+version: "3"
+
+services:
+  shairport-sync:
+    image: ${DOCKER_REGISTRY:-docker.io}/mikebrady/shairport-sync:${IMAGE_TAG:-latest}
+    container_name: shairport_sync
+    command: -v
+    network_mode: host
+    devices:
+      - /dev/snd:/dev/snd
+    volumes:
+      - ./shairport-sync.conf:/etc/shairport-sync.conf:ro
+    restart: unless-stopped
