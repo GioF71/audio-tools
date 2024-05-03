@@ -1,0 +1,17 @@
+---
+version: "3"
+
+services:
+  yams:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/yams:${IMAGE_TAG:-latest}
+    network_mode: ${NETOWORK_MODE:-host}
+    environment:
+      - TZ=${TZ:-}
+      - MPD_HOST=${MPD_HOST:-localhost}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+
