@@ -11,7 +11,7 @@ services:
       - PGID=${PGID:-1000}
       - PORT_OFFSET=${PORT_OFFSET:-5}
       - RENDERER_MODE=NONE
-      - FRIENDLY_NAME=${FRIENDLY_NAME:-Tidal Hires Preview (upmpdcli)}
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-Tidal Hires (upmpdcli)}
       - TIDAL_ENABLE=yes
       - TIDAL_AUDIO_QUALITY=${TIDAL_AUDIO_QUALITY:-HI_RES_LOSSLESS}
       - TIDAL_DOWNLOAD_PLUGIN=${TIDAL_DOWNLOAD_PLUGIN:-yes}
