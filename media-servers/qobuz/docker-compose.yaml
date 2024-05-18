@@ -1,0 +1,25 @@
+---
+version: "3"
+
+services:
+  upmpdcli:
+    image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-latest}
+    container_name: ${CONTAINER_NAME:-upmpdcli-qobuz}
+    network_mode: host
+    environment:
+      - PORT_OFFSET=7
+      - RENDERER_MODE=NONE
+      - FRIENDLY_NAME=Qobuz (upmpdcli)
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-}
+      - QOBUZ_ENABLE=yes
+      - QOBUZ_RENUM_TRACKS=${QOBUZ_RENUM_TRACKS:-}
+      - QOBUZ_EXPLICIT_ITEM_NUMBERS=${QOBUZ_EXPLICIT_ITEM_NUMBERS:-}
+      - QOBUZ_PREPEND_ARTIST_TO_ALBUM=${QOBUZ_PREPEND_ARTIST_TO_ALBUM:-}
+      - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
+      - QOBUZ_USERNAME=${QOBUZ_USERNAME:-}
+      - QOBUZ_PASSWORD=${QOBUZ_PASSWORD:-}
+      - QOBUZ_FORMAT_ID=${QOBUZ_FORMAT_ID:-6}
+    volumes:
+      - ./cache:/cache
+    restart: unless-stopped
+
