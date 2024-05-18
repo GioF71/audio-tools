@@ -18,8 +18,9 @@ services:
       - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
       - QOBUZ_USERNAME=${QOBUZ_USERNAME:-}
       - QOBUZ_PASSWORD=${QOBUZ_PASSWORD:-}
-      - QOBUZ_FORMAT_ID=${QOBUZ_FORMAT_ID:-6}
+      - QOBUZ_FORMAT_ID=${QOBUZ_FORMAT_ID:-}
     volumes:
       - ./cache:/cache
+      - ./userconfig:/user/config:ro
     restart: unless-stopped
 
