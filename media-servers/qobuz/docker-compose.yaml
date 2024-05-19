@@ -21,6 +21,6 @@ services:
       - QOBUZ_FORMAT_ID=${QOBUZ_FORMAT_ID:-}
     volumes:
       - ./cache:/cache
-      - ./userconfig:/user/config:ro
+      - ${USER_CONFIG_PATH:-./userconfig}:/user/config:ro
     restart: unless-stopped
 
