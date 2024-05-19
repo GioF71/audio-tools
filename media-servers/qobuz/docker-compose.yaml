@@ -9,7 +9,7 @@ services:
     environment:
       - PORT_OFFSET=7
       - RENDERER_MODE=NONE
-      - FRIENDLY_NAME=Qobuz (upmpdcli)
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-Qobuz (upmpdcli)}
       - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-}
       - QOBUZ_ENABLE=yes
       - QOBUZ_RENUM_TRACKS=${QOBUZ_RENUM_TRACKS:-}
