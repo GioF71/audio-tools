@@ -3,7 +3,7 @@ version: "3"
 
 services:
   squeezelite:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/squeezelite:${IMAGE_TAG:-latest}
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/squeezelite:${IMAGE_TAG:-latest}
     user: "${PUID:-1000}:${AUDIO_GID:-29}"
     network_mode: host
     devices:

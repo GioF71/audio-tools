@@ -1,44 +1,49 @@
 ---
 version: '3.3'
 
+networks:
+  mpd:
+
+volumes:
+  mpd-db:
+  upmpdcli-cache:
+  upmpdcli-confdir:
+  yams-data:
+
 services:
   mpd:
-    image: ${IMAGE_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
-    container_name: upnp-renderer-um-mpd
-    user: "${PUID:-1000}:${AUDIO_GID:-29}"
+    image: ${MPD_IMAGE_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
     environment:
       - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
+      - USER_MODE=N
       - ALSA_OUTPUT_CREATE=yes
       - ALSA_OUTPUT_ENABLED=yes
       - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-default}
       - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
       - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
     volumes:
-      - ./mpd-db:/db
+      - mpd-db:/db
     restart: unless-stopped
 
   upmpdcli:
-    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:latest-renderer
-    container_name: upnp-renderer-um-upmpdcli
-    depends_on:
-      - mpd
-    user: "${PUID:-1000}:${AUDIO_GID:-29}"
+    image: ${UPMPDCLI_IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${UPMPDCLI_TAG:-latest-renderer}
     network_mode: host
     environment:
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}
       - MPD_HOST=${MPD_HOST:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
-      - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
-      - RENDERER_MODE=${RENDERER_MODE:-BOTH}
-      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-Audirvana}
+      # Audirvana does not use OpenHome
+      - RENDERER_MODE=UPNPAV
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-yes}
     volumes:
-      - ./upmpdcli-confdir:/uprcl/confdir
-      - ./upmpdcli-cache:/cache
+      - upmpdcli-confdir:/uprcl/confdir
+      - upmpdcli-cache:/cache
     restart: unless-stopped
 
   yams:
@@ -46,8 +51,8 @@ services:
     network_mode: ${YAMS_NETWORK_MODE:-host}
     environment:
       - TZ=Europe/Rome
-      - MPD_HOST=localhost
+      - MPD_HOST=${MPD_HOST:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
     volumes:
-      - ./yams-data/data:/data
-    restart: unless-stopped
+      - yams-data:/data
+    restart: always

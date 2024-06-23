@@ -3,7 +3,7 @@ version: "3.3"
 
 services:
   mopidy:
-    image: ${MOPIDY_IMAGE_REPO:-docker.io}/giof71/mopidy:${MOPIDY_IMAGE_TAG:-latest}
+    image: ${MOPIDY_IMAGE_REGISTRY:-docker.io}/giof71/mopidy:${MOPIDY_IMAGE_TAG:-latest}
     container_name: mopidy-tidal
     devices:
       - /dev/snd:/dev/snd
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   yams:
-    image: ${YAMS_IMAGE_REPO:-docker.io}/giof71/yams:latest
+    image: ${YAMS_IMAGE_REGISTRY:-docker.io}/giof71/yams:latest
     container_name: mopidy-yams
     depends_on:
       - mopidy

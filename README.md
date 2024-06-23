@@ -13,7 +13,7 @@ cp sample.env .env
 
 from each directory.  
 After this step, you can proceed with tuning. It is generally very simple. Refer to the upstream project for more details in case of doubts.  
-All the docker-compose based configurations allow you to specify a docker registry other than docker.io (the default) using the environment variable `DOCKER_REGISTRY`, in case you have a pull-through cache registry on your network.  
+All the docker-compose based configurations allow you to specify a docker registry other than docker.io (the default) using the environment variable `IMAGE_REGISTRY`, in case you have a pull-through cache registry on your network.  
 
 ### SqueezeLite
 

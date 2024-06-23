@@ -3,8 +3,8 @@ version: "3"
 
 services:
   yams:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/yams:${IMAGE_TAG:-latest}
-    network_mode: ${NETOWORK_MODE:-host}
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/yams:${IMAGE_TAG:-latest}
+    network_mode: host
     environment:
       - TZ=${TZ:-}
       - MPD_HOST=${MPD_HOST:-localhost}

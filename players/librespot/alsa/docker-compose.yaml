@@ -3,7 +3,7 @@ version: "3"
 
 services:
   librespot:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/librespot:${IMAGE_TAG:-latest}
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/librespot:${IMAGE_TAG:-latest}
     container_name: librespot-alsa
     network_mode: host
     user: "${PUID:-1000}:${AUDIO_GID:-29}"

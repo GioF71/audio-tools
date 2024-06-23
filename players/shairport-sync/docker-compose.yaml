@@ -3,7 +3,7 @@ version: "3"
 
 services:
   shairport-sync:
-    image: ${DOCKER_REGISTRY:-docker.io}/mikebrady/shairport-sync:${IMAGE_TAG:-latest}
+    image: ${IMAGE_REGISTRY:-docker.io}/mikebrady/shairport-sync:${IMAGE_TAG:-latest}
     container_name: shairport_sync
     command: -v
     network_mode: host

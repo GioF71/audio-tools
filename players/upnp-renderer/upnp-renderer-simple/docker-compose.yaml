@@ -9,15 +9,17 @@ volumes:
 
 services:
   mpd:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
-    container_name: upnp-renderer-simple-mpd
+    image: ${MPD_IMAGE_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
     environment:
       - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
-      - USER_MODE=N
+      - USER_MODE=${MPD_USER_MODE:-N}
+      - PUID=${MPD_PUID:-}
+      - PGID=${MPD_PGID:-}
+      - AUDIO_GID=${MPD_AUDIO_GID:-}
       - ALSA_OUTPUT_CREATE=yes
       - ALSA_OUTPUT_ENABLED=yes
       - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-default}
@@ -25,33 +27,33 @@ services:
       - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
     volumes:
       - mpd-db:/db
-    restart: unless-stopped
+    restart: ${RESTART_MODE:-unless-stopped}
 
   upmpdcli:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/upmpdcli:${UPMPDCLI_TAG:-latest-renderer}
-    container_name: upnp-renderer-simple-upmpdcli
+    image: ${UPMPDCLI_IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${UPMPDCLI_TAG:-latest-renderer}
     network_mode: host
     environment:
-      - PUID=${PUID:-1000}
-      - PGID=${PGID:-1000}
+      - PUID=${UPMPDCLI_PUID:-}
+      - PGID=${UPMPDCLI_PGID:-}
       - MPD_HOST=${MPD_HOST:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
       - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
       - RENDERER_MODE=${RENDERER_MODE:-BOTH}
-      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-yes}
     volumes:
       - upmpdcli-confdir:/uprcl/confdir
       - upmpdcli-cache:/cache
-    restart: unless-stopped
+    restart: ${RESTART_MODE:-unless-stopped}
 
   yams:
-    image: ${DOCKER_REGISTRY:-docker.io}/giof71/yams:${YAMS_TAG:-latest}
-    container_name: upnp-renderer-simple-yams
-    network_mode: host
+    image: ${YAMS_REGISTRY:-docker.io}/${YAMS_IMAGE:-giof71/yams}:${YAMS_TAG:-latest}
+    network_mode: ${YAMS_NETWORK_MODE:-host}
     environment:
       - TZ=Europe/Rome
-      - MPD_HOST=localhost
+      - MPD_HOST=${MPD_BIND_ADDRESS:-127.0.0.1}
       - MPD_PORT=${MPD_PORT:-6600}
+      - PUID=${YAMS_PUID:-}
+      - PGID=${YAMS_PGID:-}
     volumes:
       - yams-data:/data
-    restart: always
+    restart: ${RESTART_MODE:-unless-stopped}
