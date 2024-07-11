@@ -1,0 +1,24 @@
+---
+version: "3"
+
+services:
+  upmpdcli:
+    image: giof71/upmpdcli
+    network_mode: host
+    environment:
+      - PORT_OFFSET=0
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - RENDERER_MODE=${RENDERER_MODE:-NONE}
+      - UPRCL_ENABLE=yes
+      - UPRCL_USER=upmpdcli-library
+      - UPRCL_AUTOSTART=1
+      - MEDIA_SERVER_FRIENDLY_NAME=${MEDIA_SERVER_FRIENDLY_NAME:-Media Library (UpRCL)}
+    volumes:
+      - ./cache:/cache
+      - ./log:/log
+      - ./uprclconfdir:/uprcl/confdir
+      - ${MUSIC_PATH:-./music}:/uprcl/mediadirs
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+    restart: unless-stopped 
