@@ -7,3 +7,4 @@ Device|Card Name|SoftVol|LibreSpot
 Topping D10|D10|Yes|Set FORMAT=S32
 Hifiberry Digi+ Pro|sndrpihifiberry|Yes|Set FORMAT=S16
 Aune S6|DAC|Yes|Set FORMAT=S32
+Fosi Audio DS1|DS1|Yes|Not tested yet
