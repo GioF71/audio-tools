@@ -10,7 +10,7 @@ docker run \
     --rm \
     --env-file .env \
     --user "$PUID:$PGID" \
-    --entrypoint /app/bin/get-tidal-credentials-pkce.py \
+    --entrypoint /app/bin/get-tidal-credentials-oauth2.py \
     -v $(pwd)/cache/tidal:/tmp/generated \
     giof71/upmpdcli
 
