@@ -1,0 +1,30 @@
+---
+version: "3"
+
+services:
+  upmpdcli:
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-latest}
+    network_mode: host
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - PORT_OFFSET=${PORT_OFFSET:-10}
+      - RENDERER_MODE=NONE
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-Subsonic (upmpdcli)}
+      - SUBSONIC_ENABLE=yes
+      - SUBSONIC_TITLE=${SUBSONIC_TITLE:-Subsonic}
+      - SUBSONIC_BASE_URL=${SUBSONIC_BASE_URL}
+      - SUBSONIC_PORT=${SUBSONIC_PORT}
+      - SUBSONIC_USER=${SUBSONIC_USER}
+      - SUBSONIC_PASSWORD=${SUBSONIC_PASSWORD}
+      - SUBSONIC_LEGACYAUTH=${SUBSONIC_LEGACYAUTH:-}
+      - SUBSONIC_SERVER_SIDE_SCROBBLING=${SUBSONIC_SERVER_SIDE_SCROBBLING:-}
+      - SUBSONIC_FORCE_CONNECTOR_VERSION=${SUBSONIC_FORCE_CONNECTOR_VERSION:-}
+      - SUBSONIC_DOWNLOAD_PLUGIN=${SUBSONIC_DOWNLOAD_PLUGIN:-yes}
+      - SUBSONIC_PLUGIN_BRANCH=${SUBSONIC_PLUGIN_BRANCH:-latest-subsonic}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-}
+      - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
+    volumes:
+      - ./cache:/cache
+    restart: unless-stopped
+
