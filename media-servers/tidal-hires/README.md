@@ -5,10 +5,13 @@
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
 A premium Tidal Account is required.  
 
-## It's only a media server, not a renderer
+## It's only a media server by default
 
-Please note that this configuration only creates a media server. It does *not* create an UPnP renderer.  
-If you need to create an UPnP renderer, have a look [here](https://github.com/GioF71/audio-tools/tree/main/players/upnp-renderer/upnp-renderer-simple).  
+Please note that this configuration only creates a media server by default.
+If you just need to create an UPnP renderer, have a look [here](https://github.com/GioF71/audio-tools/tree/main/players/upnp-renderer/upnp-renderer-simple).  
+You can however enable the UPnP renderer on this configuration by setting RENDERER_MODE to `BOTH`, `OPENHOME` or `UPNPAV`.  
+Follow the instructions in the sample.env file for additional tuning, end refer to the documentation for [this repository](https://github.com/GioF71/upmpdcli-docker).  
+Be careful, don't create more renderers than you need: it can get confusing quickly!  
 
 ## Limitations
 
