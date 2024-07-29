@@ -5,6 +5,11 @@
 A simple compose file you can use to create an instance of upmpdcli for the Subsonic Plugin.  
 You will need to have a running subsonic server or an account on a publicly available one.  
 
+## It's only a media server, not a renderer
+
+Please note that this configuration only creates a media server. It does *not* create an UPnP renderer.  
+If you need to create an UPnP renderer, have a look [here](https://github.com/GioF71/audio-tools/tree/main/players/upnp-renderer/upnp-renderer-simple).  
+
 ## Instructions
 
 ### Create your Environment file

@@ -5,6 +5,11 @@
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
 A premium Tidal Account is required.  
 
+## It's only a media server, not a renderer
+
+Please note that this configuration only creates a media server. It does *not* create an UPnP renderer.  
+If you need to create an UPnP renderer, have a look [here](https://github.com/GioF71/audio-tools/tree/main/players/upnp-renderer/upnp-renderer-simple).  
+
 ## Limitations
 
 The only renderers know to be working with Tidal in hires mode (so using the variable `TIDAL_AUDIO_QUALITY` set to `HI_RES_LOSSLESS`) with upmpdcli as the media server are:
