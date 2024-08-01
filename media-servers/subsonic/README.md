@@ -14,6 +14,7 @@ Link|Description
 [upmpdcli subsonic configuration manual](https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-manual.html#UPMPDCLI-MS-SUBSONIC)|Subsonic section of the manual
 [Discussion on upmpdcli-docker](https://github.com/GioF71/upmpdcli-docker/discussions/145)|Plugin announcement
 [Discussion on navidrome](https://github.com/navidrome/navidrome/discussions/2324)|Plugin announcement on Navidrome
+[My repository for plugin development](https://github.com/GioF71/upmpdcli-plugins)|Mirror of upmpdcli on GitHub, for my plugin development activities
 
 ## It's only a media server, not a renderer
 
