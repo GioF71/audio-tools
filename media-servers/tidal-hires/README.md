@@ -57,7 +57,7 @@ If you generate both credentials file, upmpdcli will use the pkce version by def
 ### Tune your settings
 
 This is not mandatory, but you can copy the provided `sample.env` to your own `.env` file.  
-Copy the files:
+Copy the file:
 
 ```text
 cp sample.env .env

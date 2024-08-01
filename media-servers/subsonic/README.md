@@ -5,6 +5,16 @@
 A simple compose file you can use to create an instance of upmpdcli for the Subsonic Plugin.  
 You will need to have a running subsonic server or an account on a publicly available one.  
 
+## Links
+
+Link|Description
+:---|:--
+[upmpdcli-docker](https://github.com/GioF71/upmpdcli-docker)|Docker container image for upmpdcli
+[upmpdcli manual](https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-manual.html)|Manual for upmpdcli
+[upmpdcli subsonic configuration manual](https://www.lesbonscomptes.com/upmpdcli/pages/upmpdcli-manual.html#UPMPDCLI-MS-SUBSONIC)|Subsonic section of the manual
+[Discussion on upmpdcli-docker](https://github.com/GioF71/upmpdcli-docker/discussions/145)|Plugin announcement
+[Discussion on navidrome](https://github.com/navidrome/navidrome/discussions/2324)|Plugin announcement on Navidrome
+
 ## It's only a media server, not a renderer
 
 Please note that this configuration only creates a media server. It does *not* create an UPnP renderer.  
