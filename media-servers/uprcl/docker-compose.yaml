@@ -6,7 +6,7 @@ services:
     image: giof71/upmpdcli
     network_mode: host
     environment:
-      - PORT_OFFSET=0
+      - PORT_OFFSET=${PORT_OFFSET:-0}
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}
       - RENDERER_MODE=${RENDERER_MODE:-NONE}
@@ -14,6 +14,15 @@ services:
       - UPRCL_USER=upmpdcli-library
       - UPRCL_AUTOSTART=1
       - MEDIA_SERVER_FRIENDLY_NAME=${MEDIA_SERVER_FRIENDLY_NAME:-Media Library (UpRCL)}
+      - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
+      - RENDERER_MODE=${RENDERER_MODE:-NONE}
+      # UPMPD_FRIENDLY_NAME is effective only when RENDERER_MODE is set to OPENHOME or BOTH
+      - UPMPD_FRIENDLY_NAME=${UPMPD_FRIENDLY_NAME:-UPnP Renderer (OpenHome)}
+      # AV_FRIENDLY_NAME is effective only when RENDERER_MODE is set to UPNPAV or BOTH
+      - AV_FRIENDLY_NAME=${AV_FRIENDLY_NAME:-UPnP Renderer (AV)}
+      - MPD_HOST=${MPD_HOST:-localhost}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
     volumes:
       - ./cache:/cache
       - ./log:/log

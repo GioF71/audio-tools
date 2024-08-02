@@ -9,8 +9,7 @@ services:
       - PUID=${PUID:-1000}
       - PGID=${PGID:-1000}
       - PORT_OFFSET=${PORT_OFFSET:-10}
-      - RENDERER_MODE=NONE
-      - FRIENDLY_NAME=${FRIENDLY_NAME:-Subsonic (upmpdcli)}
+      - MEDIA_SERVER_FRIENDLY_NAME=${MEDIA_SERVER_FRIENDLY_NAME:-Subsonic (upmpdcli)}
       - SUBSONIC_ENABLE=yes
       - SUBSONIC_TITLE=${SUBSONIC_TITLE:-Subsonic}
       - SUBSONIC_BASE_URL=${SUBSONIC_BASE_URL}
@@ -22,8 +21,15 @@ services:
       - SUBSONIC_FORCE_CONNECTOR_VERSION=${SUBSONIC_FORCE_CONNECTOR_VERSION:-}
       - SUBSONIC_DOWNLOAD_PLUGIN=${SUBSONIC_DOWNLOAD_PLUGIN:-yes}
       - SUBSONIC_PLUGIN_BRANCH=${SUBSONIC_PLUGIN_BRANCH:-latest-subsonic}
-      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-}
       - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
+      - RENDERER_MODE=${RENDERER_MODE:-NONE}
+      # UPMPD_FRIENDLY_NAME is effective only when RENDERER_MODE is set to OPENHOME or BOTH
+      - UPMPD_FRIENDLY_NAME=${UPMPD_FRIENDLY_NAME:-UPnP Renderer (OpenHome)}
+      # AV_FRIENDLY_NAME is effective only when RENDERER_MODE is set to UPNPAV or BOTH
+      - AV_FRIENDLY_NAME=${AV_FRIENDLY_NAME:-UPnP Renderer (AV)}
+      - MPD_HOST=${MPD_HOST:-localhost}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
     volumes:
       - ./cache:/cache
     restart: unless-stopped
