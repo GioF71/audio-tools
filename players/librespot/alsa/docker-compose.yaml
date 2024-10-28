@@ -9,6 +9,7 @@ services:
   librespot:
     image: ${IMAGE_REGISTRY:-docker.io}/giof71/librespot:${IMAGE_TAG:-latest}
     container_name: librespot-alsa
+    user: "${uid:-0}:${gid:-0}"
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
