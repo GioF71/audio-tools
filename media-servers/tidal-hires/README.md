@@ -4,6 +4,7 @@
 
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
 A premium Tidal Account is required.  
+By default, we will be using the `next-tidal` branch so we have version `0.7.5` of the plugin, because since this version we are finally back to a simple authentication process.  
 
 ## It's only a media server by default
 
@@ -30,25 +31,14 @@ When using the lower quality modes, almost every UPnP/DLNA player should be able
 
 ### Get the credentials
 
-#### For HI_RES_LOSSLESS
+Since version 0.7.5 of the Tidal plugin, we can monitor the container log and simply follow a link and authenticate in order to obtain a set of credentials for Tidal.  
+Run the container using the following command:
 
-Clone this repository and move to the media-servers/tidal-hires directory (this directory).  
-Execute the `get-pkce-credentials.sh` script, and follow the instructions.  
-Read those instructions very carefully. It's actually a very simple process.  
-You will have to click a link, login to Tidal if you haven't already, authorize the request, then paste the Oops url to the console and finally press ENTER.  
-In order to run the script, use the following command, from this directory:
+`docker-compose up -d && docker-compose logs -f`
 
-`./get-pkce-credentials.sh`
-
-#### For HI_RES and below
-
-Clone this repository and move to the media-servers/tidal-hires directory (this directory).  
-Execute the `get-oauth2-credentials.sh` script, and follow the instructions.  
-Read those instructions very carefully. It's actually a very simple process.  
-You will have to click a link, login to Tidal if you haven't already, and then simply authorize the request.  
-In order to run the script, use the following command, from this directory:
-
-`./get-oauth2-credentials.sh`
+Wait for the container to start, then go to the control point and try to navigate the media server.  
+You will presented with a url with instructions. Open the link in your browser, authenticate to Tidal if needed, then authorize the request.  
+The container should now be fully functional, you can access it from your control point.  
 
 #### Caveat
 
