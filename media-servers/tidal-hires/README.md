@@ -79,7 +79,7 @@ After this operation, the container should be fully functional, and you will be 
 #### Caveat
 
 If both `oauth2.credentials.json` and `pkce.credentials.json` credentials file are available, upmpdcli will use `oauth2.credentials.json` by default.  
-The `pkce.credentials.json` is still currently support as legacy and will probably be removed in the future.  
+The `pkce.credentials.json` is still currently supported as a legacy feature and will probably be removed in the future.  
 
 ### Start the application
 
