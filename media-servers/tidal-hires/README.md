@@ -35,6 +35,19 @@ When using the lower quality modes, almost every UPnP/DLNA player should be able
 
 ## Instructions
 
+### Tune your settings
+
+This is not mandatory, but you can copy the provided `sample.env` to your own `.env` file.  
+Copy the file:
+
+```text
+cp sample.env .env
+```
+
+Edit you `.env` file, instructions and options are in the file itself.  
+Carefully configure the `TIDAL_AUDIO_QUALITY`, according to the authentication type for which you have created the credentials file.  
+Also tune `FRIENDLY_NAME` so that the media server is easily recognizable among the others you might have running on your network.  
+
 ### Get the credentials
 
 #### Interactively
@@ -67,19 +80,6 @@ After this operation, the container should be fully functional, and you will be 
 
 If both `oauth2.credentials.json` and `pkce.credentials.json` credentials file are available, upmpdcli will use `oauth2.credentials.json` by default.  
 The `pkce.credentials.json` is still currently support as legacy and will probably be removed in the future.  
-
-### Tune your settings
-
-This is not mandatory, but you can copy the provided `sample.env` to your own `.env` file.  
-Copy the file:
-
-```text
-cp sample.env .env
-```
-
-Edit you `.env` file, instructions and options are in the file itself.  
-Carefully configure the `TIDAL_AUDIO_QUALITY`, according to the authentication type for which you have created the credentials file.  
-Also tune `FRIENDLY_NAME` so that the media server is easily recognizable among the others you might have running on your network.  
 
 ### Start the application
 
