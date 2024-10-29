@@ -17,6 +17,12 @@ Solutions like Moode Audio and Volumio run instances of mpd by default. Make sur
 Without an instance of MPD running, the renderer won't work. If you don't have MPD running, you can create one using [this repository for a MPD docker image](https://github.com/GioF71/mpd-alsa-docker).  
 Be careful, don't create more renderers than you need: it can get confusing quickly!  
 
+## A control point is required
+
+In order to access the media server, you will need to run a control point application: look [here](https://en.wikipedia.org/wiki/List_of_UPnP_AV_media_servers_and_clients#UPnP_control_points_and_player_software) for a list of choices.  
+My personal preference goes to [upplay](https://www.lesbonscomptes.com/upplay/index.html) on Linux, MacOS and Windows and to [BubbleUPnP for DLNA/Chromecast](https://play.google.com/store/apps/details?id=com.bubblesoft.android.bubbleupnp&hl=en) for Android devices.  
+Honorable mention for mConnect player lite, available for both [Android](https://play.google.com/store/apps/details?id=com.conversdigital&hl=en) and [iOS](https://apps.apple.com/it/app/mconnect-player-lite/id507379024).  
+
 ## Limitations
 
 The only renderers know to be working with Tidal in hires mode (so using the variable `TIDAL_AUDIO_QUALITY` set to `HI_RES_LOSSLESS`) with upmpdcli as the media server are:
@@ -31,6 +37,8 @@ When using the lower quality modes, almost every UPnP/DLNA player should be able
 
 ### Get the credentials
 
+#### Interactively
+
 Since version 0.7.5 of the Tidal plugin, we can monitor the container log and simply follow a link and authenticate in order to obtain a set of credentials for Tidal.  
 Run the container using the following command:
 
@@ -39,10 +47,26 @@ Run the container using the following command:
 Wait for the container to start, then go to the control point and try to navigate the media server.  
 You will presented with a url with instructions. Open the link in your browser, authenticate to Tidal if needed, then authorize the request.  
 The container should now be fully functional, you can access it from your control point.  
+If you run an application like [Portainer](https://www.portainer.io/) or similar, you can avoid to use the command line, you just need to look at the container logs.  
+
+#### Using the script
+
+If you don't want to obtain the credentials interactively, you can instead execute the get_credentials.py script.  
+The container must be running, so if it is not, run it using:
+
+`docker-compose up -d`
+
+After that, launch the script using the following command:
+
+`docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -f /cache/tidal/oauth2.credentials.json"'`
+
+Follow the on-screen instruction. You will have to copy the URL to your browser, authenticate to Tidal if needed, and authorize the request.  
+After this operation, the container should be fully functional, and you will be able to access the contents from your control point.  
 
 #### Caveat
 
-If you generate both credentials file, upmpdcli will use the pkce version by default. If you don't want this and want to use the regular (oauth2) version of the credentials, just delete the file `pkce.credentials.json` from the `cache/tidal` directory.
+If both `oauth2.credentials.json` and `pkce.credentials.json` credentials file are available, upmpdcli will use `oauth2.credentials.json` by default.  
+The `pkce.credentials.json` is still currently support as legacy and will probably be removed in the future.  
 
 ### Tune your settings
 
