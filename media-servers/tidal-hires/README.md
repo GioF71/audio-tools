@@ -4,7 +4,7 @@
 
 This script and compose file will allow you to create a media server for Tidal, with support for HiRes lossless audio.  
 A premium Tidal Account is required.  
-By default, we will be using the `next-tidal` branch so we have version `0.7.5` of the plugin, because since this version we are finally back to a simple authentication process.  
+By default, we will be using the `next-tidal` branch so we have version `0.7.6` of the plugin, because since this version we are finally back to a simple authentication process.  
 
 ## It's only a media server by default
 
