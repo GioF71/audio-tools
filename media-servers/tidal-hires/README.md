@@ -52,7 +52,7 @@ Also tune `FRIENDLY_NAME` so that the media server is easily recognizable among 
 
 #### Interactively
 
-Since version 0.7.5 of the Tidal plugin, we can monitor the container log and simply follow a link and authenticate in order to obtain a set of credentials for Tidal.  
+Since version `0.7.6` of the Tidal plugin, we can monitor the container log and simply follow a link and authenticate in order to obtain a set of credentials for Tidal.  
 Run the container using the following command:
 
 `docker-compose up -d && docker-compose logs -f`
