@@ -1,0 +1,26 @@
+---
+version: "3"
+
+services:
+  upmpdcli:
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-latest}
+    container_name: ${CONTAINER_NAME:-upmpdcli-bbc}
+    network_mode: host
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - PORT_OFFSET=${PORT_OFFSET:-4}
+      - MEDIA_SERVER_FRIENDLY_NAME=${MEDIA_SERVER_FRIENDLY_NAME:-BBC (upmpdcli)}
+      - BBC_ENABLE=yes
+      - BBC_PROGRAMME_DAYS=${BBC_PROGRAMME_DAYS:-}
+      - RENDERER_MODE=${RENDERER_MODE:-NONE}
+      # UPMPD_FRIENDLY_NAME is effective only when RENDERER_MODE is set to OPENHOME or BOTH
+      - UPMPD_FRIENDLY_NAME=${UPMPD_FRIENDLY_NAME:-UPnP Renderer (OpenHome)}
+      # AV_FRIENDLY_NAME is effective only when RENDERER_MODE is set to UPNPAV or BOTH
+      - AV_FRIENDLY_NAME=${AV_FRIENDLY_NAME:-UPnP Renderer (AV)}
+      - MPD_HOST=${MPD_HOST:-localhost}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+    volumes:
+      - ./cache:/cache
+    restart: unless-stopped
