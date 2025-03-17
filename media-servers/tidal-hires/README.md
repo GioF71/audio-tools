@@ -31,7 +31,7 @@ The only renderers know to be working with Tidal in hires mode (so using the var
 - [gmrender-resurrect](https://github.com/hzeller/gmrender-resurrect), docker image ([here](https://github.com/GioF71/gmrender-resurrect-docker))
   
 The limitation is due to the fact that the player must be able to play a `mpd manifest`.  
-When using the lower quality modes, almost every UPnP/DLNA player should be able to stream correctly.
+Other players (Kodi, WiiM, etc.) will be automatically served a lower quality stream (lossless 16/44): still an excellent quality.  
 
 ## Instructions
 
