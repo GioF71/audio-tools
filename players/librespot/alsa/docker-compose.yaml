@@ -28,6 +28,9 @@ services:
       - ENABLE_SYSTEM_CACHE=${ENABLE_SYSTEM_CACHE:-n}
       - DISABLE_CREDENTIALS_CACHE=${DISABLE_CREDENTIALS_CACHE:-y}
       - ENABLE_OAUTH=${ENABLE_OAUTH:-}
+      - ZEROCONF_BACKEND=${ZEROCONF_BACKEND:-libmdns}
+      - AUTOPLAY=${AUTOPLAY:-}
+      - ADDITIONAL_ARGUMENTS=${ADDITIONAL_ARGUMENTS:-}
     volumes:
       - cache:/data/cache
       - system-cache:/data/system-cache
