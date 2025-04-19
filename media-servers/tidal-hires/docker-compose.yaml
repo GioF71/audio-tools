@@ -3,7 +3,7 @@ version: "3"
 
 services:
   upmpdcli:
-    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-master}
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-edge}
     container_name: ${CONTAINER_NAME:-upmpdcli-tidal-hires}
     network_mode: host
     environment:
