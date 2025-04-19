@@ -27,6 +27,7 @@ services:
       - MPD_HOST=${MPD_HOST:-localhost}
       - MPD_PORT=${MPD_PORT:-6600}
       - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+      - TIDAL_ENABLE_USER_AGENT_WHITELIST=${TIDAL_ENABLE_USER_AGENT_WHITELIST:-}
     volumes:
       - ./cache:/cache
     restart: unless-stopped
