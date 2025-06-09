@@ -1,0 +1,33 @@
+---
+version: "3"
+
+volumes:
+  cache:
+
+services:
+  upmpdcli:
+    image: ${IMAGE_REGISTRY:-docker.io}/giof71/upmpdcli:${IMAGE_TAG:-edge}
+    container_name: ${CONTAINER_NAME:-upmpdcli-tidal-hires-wvolumes}
+    network_mode: host
+    environment:
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - PORT_OFFSET=${PORT_OFFSET:-5}
+      - MEDIA_SERVER_FRIENDLY_NAME=${MEDIA_SERVER_FRIENDLY_NAME:-Tidal Hires (upmpdcli)}
+      - TIDAL_ENABLE=yes
+      - TIDAL_AUDIO_QUALITY=${TIDAL_AUDIO_QUALITY:-HI_RES_LOSSLESS}
+      - TIDAL_ENABLE_IMAGE_CACHING=${TIDAL_ENABLE_IMAGE_CACHING:-}
+      - WEBSERVER_DOCUMENT_ROOT=/cache/wwwpublic
+      - PLG_PROXY_METHOD=${PLG_PROXY_METHOD:-}
+      - RENDERER_MODE=${RENDERER_MODE:-NONE}
+      # UPMPD_FRIENDLY_NAME is effective only when RENDERER_MODE is set to OPENHOME or BOTH
+      - UPMPD_FRIENDLY_NAME=${UPMPD_FRIENDLY_NAME:-UPnP Renderer (OpenHome)}
+      # AV_FRIENDLY_NAME is effective only when RENDERER_MODE is set to UPNPAV or BOTH
+      - AV_FRIENDLY_NAME=${AV_FRIENDLY_NAME:-UPnP Renderer (AV)}
+      - MPD_HOST=${MPD_HOST:-localhost}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+      - TIDAL_ENABLE_USER_AGENT_WHITELIST=${TIDAL_ENABLE_USER_AGENT_WHITELIST:-}
+    volumes:
+      - cache:/cache
+    restart: unless-stopped
