@@ -2,7 +2,8 @@
 version: "3"
 
 volumes:
-  cache:
+  tidal-cache:
+    external: true
 
 services:
   upmpdcli:
@@ -29,5 +30,5 @@ services:
       - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
       - TIDAL_ENABLE_USER_AGENT_WHITELIST=${TIDAL_ENABLE_USER_AGENT_WHITELIST:-}
     volumes:
-      - cache:/cache
+      - tidal-cache:/cache
     restart: unless-stopped
