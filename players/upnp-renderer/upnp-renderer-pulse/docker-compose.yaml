@@ -33,8 +33,8 @@ services:
       - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
     volumes:
       - mpd-db:/db
-      - "/run/user/${PUID:-1000}/pulse:/run/user/${PUID:-1000}/pulse"
-    restart: ${RESTART_MODE:-unless-stopped}
+      - "/run/user/${PUID:-1000}:/run/user/${PUID:-1000}"
+    restart: ${RESTART_MODE:-none}
 
   upmpdcli:
     image: giof71/upmpdcli:${UPMPDCLI_TAG:-latest-renderer}
@@ -50,7 +50,7 @@ services:
     volumes:
       - upmpdcli-confdir:/uprcl/confdir
       - upmpdcli-cache:/cache
-    restart: ${RESTART_MODE:-unless-stopped}
+    restart: ${RESTART_MODE:-none}
 
   yams:
     image: ${YAMS_IMAGE:-giof71/yams}:${YAMS_TAG:-latest}
@@ -63,4 +63,4 @@ services:
       - PGID=${YAMS_PGID:-}
     volumes:
       - yams-data:/data
-    restart: ${RESTART_MODE:-unless-stopped}
+    restart: ${RESTART_MODE:-none}
