@@ -3,7 +3,7 @@ version: "3"
 
 services:
   upmpdcli:
-    image: giof71/upmpdcli
+    image: giof71/upmpdcli:${IMAGE_TAG:-latest}
     network_mode: host
     environment:
       - PORT_OFFSET=${PORT_OFFSET:-0}
