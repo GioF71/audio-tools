@@ -1,0 +1,66 @@
+---
+version: '3.3'
+
+volumes:
+  mpd-db:
+  upmpdcli-cache:
+  upmpdcli-confdir:
+  yams-data:
+
+services:
+  mpd:
+    image: ${MPD_IMAGE_REGISTRY:-docker.io}/giof71/mpd-alsa:${MPD_TAG:-vanilla}
+    network_mode: host
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - MPD_BIND_ADDRESS=${MPD_BIND_ADDRESS:-127.0.0.1}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - USER_MODE=Y
+      - PUID=${MPD_PUID:-1000}
+      - PGID=${MPD_PGID:-1000}
+      - AUDIO_GID=${MPD_AUDIO_GID:-}
+      - PULSE_AUDIO_OUTPUT_CREATE=${PULSE_AUDIO_OUTPUT_CREATE:-yes}
+      - PULSE_AUDIO_OUTPUT_ENABLED=${PULSE_AUDIO_OUTPUT_ENABLED:-yes}
+      - PULSE_AUDIO_OUTPUT_NAME=${PULSE_AUDIO_OUTPUT_NAME:-MPD}
+      - PULSE_AUDIO_OUTPUT_SINK=${PULSE_AUDIO_OUTPUT_SINK:-}
+      - PULSE_AUDIO_OUTPUT_MEDIA_ROLE=${PULSE_AUDIO_OUTPUT_MEDIA_ROLE:-}
+      - PULSE_AUDIO_OUTPUT_SCALING_FACTOR=${PULSE_AUDIO_OUTPUT_SCALING_FACTOR:-}
+      - ALSA_OUTPUT_CREATE=${ALSA_OUTPUT_CREATE:-no}
+      - ALSA_OUTPUT_ENABLED=${ALSA_OUTPUT_ENABLED:-yes}
+      - ALSA_OUTPUT_DEVICE=${MPD_ALSA_DEVICE:-default}
+      - ALSA_OUTPUT_MIXER_TYPE=${MPD_MIXER_TYPE:-software}
+      - ALSA_OUTPUT_FORMAT=${MPD_ALSA_OUTPUT_FORMAT:-}
+    volumes:
+      - mpd-db:/db
+      - "/run/user/${PUID:-1000}/pulse:/run/user/${PUID:-1000}/pulse"
+    restart: ${RESTART_MODE:-unless-stopped}
+
+  upmpdcli:
+    image: giof71/upmpdcli:${UPMPDCLI_TAG:-latest-renderer}
+    network_mode: host
+    environment:
+      - PUID=${UPMPDCLI_PUID:-1000}
+      - PGID=${UPMPDCLI_PGID:-1000}
+      - MPD_HOST=${MPD_HOST:-127.0.0.1}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - FRIENDLY_NAME=${FRIENDLY_NAME:-UpnpRenderer}
+      - RENDERER_MODE=${RENDERER_MODE:-BOTH}
+      - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-yes}
+    volumes:
+      - upmpdcli-confdir:/uprcl/confdir
+      - upmpdcli-cache:/cache
+    restart: ${RESTART_MODE:-unless-stopped}
+
+  yams:
+    image: ${YAMS_IMAGE:-giof71/yams}:${YAMS_TAG:-latest}
+    network_mode: ${YAMS_NETWORK_MODE:-host}
+    environment:
+      - TZ=Europe/Rome
+      - MPD_HOST=${MPD_BIND_ADDRESS:-127.0.0.1}
+      - MPD_PORT=${MPD_PORT:-6600}
+      - PUID=${YAMS_PUID:-}
+      - PGID=${YAMS_PGID:-}
+    volumes:
+      - yams-data:/data
+    restart: ${RESTART_MODE:-unless-stopped}
