@@ -1,0 +1,17 @@
+[Unit]
+Description=UPnP Renderer Pulse
+After=network.target network-online.target sound.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+#ExecStartPre=-/usr/bin/docker stop mpd-pulse
+#ExecStartPre=-/usr/bin/docker rm mpd-pulse
+
+ExecStart=docker compose --project-directory %h/audio-tools/players/upnp-renderer/upnp-renderer-pulse up mpd upmpdcli
+
+# ExecStop=-/usr/bin/docker stop mpd-pulse
+# ExecStop=-/usr/bin/docker rm mpd-pulse
+
+[Install]
+WantedBy=default.target
