@@ -15,6 +15,7 @@ Link|Description
 [Discussion on upmpdcli-docker](https://github.com/GioF71/upmpdcli-docker/discussions/145)|Plugin announcement
 [Discussion on navidrome](https://github.com/navidrome/navidrome/discussions/2324)|Plugin announcement on Navidrome
 [My repository for plugin development](https://github.com/GioF71/upmpdcli-plugins)|Mirror of upmpdcli on GitHub, for my plugin development activities
+[Release History]|See [here](https://github.com/GioF71/upmpdcli-plugins/blob/master/src/mediaserver/cdplugins/subsonic/release.md)
 
 ## It's only a media server by default
 
