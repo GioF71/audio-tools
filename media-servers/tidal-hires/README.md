@@ -59,6 +59,7 @@ Run the container using the following command:
 
 Wait for the container to start, then go to the control point and try to navigate the media server.  
 You will presented with a url with instructions. Open the link in your browser, authenticate to Tidal if needed, then authorize the request.  
+For the pkce variant, you will have to paste that _oops_ url in the terminal.  
 The container should now be fully functional, you can access it from your control point.  
 If you run an application like [Portainer](https://www.portainer.io/) or similar, you can avoid to use the command line, you just need to look at the container logs.  
 
