@@ -73,6 +73,10 @@ After that, launch the script using the following command:
 
 `docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -f /cache/tidal/oauth2.credentials.json"'`
 
+or this variant for pkce authentication:
+
+`docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -t pkce -f /cache/tidal/pkce.credentials.json"'`
+
 Follow the on-screen instruction. You will have to copy the URL to your browser, authenticate to Tidal if needed, and authorize the request.  
 After this operation, the container should be fully functional, and you will be able to access the contents from your control point.  
 
