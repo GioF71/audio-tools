@@ -73,7 +73,7 @@ After that, launch the script using the following command:
 
 `docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -f /cache/tidal/oauth2.credentials.json"'`
 
-or this variant for pkce authentication:
+or this variant for pkce authentication, required for hires streaming lately:
 
 `docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -t pkce -f /cache/tidal/pkce.credentials.json"'`
 
