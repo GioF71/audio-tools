@@ -50,7 +50,7 @@ Also tune `FRIENDLY_NAME` so that the media server is easily recognizable among 
 
 ### Get the credentials
 
-#### Interactively
+#### Interactively (limited to oauth2 mode)
 
 Since version `0.7.6` of the Tidal plugin, we can monitor the container log and simply follow a link and authenticate in order to obtain a set of credentials for Tidal.  
 Run the container using the following command:
@@ -62,9 +62,9 @@ You will presented with a url with instructions. Open the link in your browser, 
 The container should now be fully functional, you can access it from your control point.  
 If you run an application like [Portainer](https://www.portainer.io/) or similar, you can avoid to use the command line, you just need to look at the container logs.  
 
-#### Using the script
+#### Using the script (allows hires with pkce variant)
 
-If you don't want to obtain the credentials interactively, you can instead execute the get_credentials.py script.  
+If you don't want to obtain the credentials interactively, or need pkce authentication in order to unlock hires streaming, you can instead execute the get_credentials.py script.  
 The container must be running, so if it is not, run it using:
 
 `docker-compose up -d`
