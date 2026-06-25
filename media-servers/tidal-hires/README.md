@@ -59,7 +59,6 @@ Run the container using the following command:
 
 Wait for the container to start, then go to the control point and try to navigate the media server.  
 You will presented with a url with instructions. Open the link in your browser, authenticate to Tidal if needed, then authorize the request.  
-For the pkce variant, you will have to paste that _oops_ url in the terminal.  
 The container should now be fully functional, you can access it from your control point.  
 If you run an application like [Portainer](https://www.portainer.io/) or similar, you can avoid to use the command line, you just need to look at the container logs.  
 
@@ -79,6 +78,7 @@ or this variant for pkce authentication, required for hires streaming lately:
 `docker-compose exec upmpdcli sh -c 'su - $(id -u -n $PUID) -c "/usr/share/upmpdcli/cdplugins/tidal/get_credentials.py -t pkce -f /cache/tidal/pkce.credentials.json"'`
 
 Follow the on-screen instruction. You will have to copy the URL to your browser, authenticate to Tidal if needed, and authorize the request.  
+For the pkce variant, you will have to paste that _oops_ url in the terminal.  
 After this operation, the container should be fully functional, and you will be able to access the contents from your control point.  
 
 #### Caveat
