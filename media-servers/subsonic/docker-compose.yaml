@@ -27,6 +27,7 @@ services:
       - MPD_HOST=${MPD_HOST:-localhost}
       - MPD_PORT=${MPD_PORT:-6600}
       - CHECK_CONTENT_FORMAT=${CHECK_CONTENT_FORMAT:-no}
+      - UPNPIFACE=${UPNPIFACE:-}
     volumes:
       - ./cache:/cache
     restart: unless-stopped
